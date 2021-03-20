@@ -1,0 +1,67 @@
+body {
+    font-family: Helvetica;
+    margin: 0;
+    padding: 0;
+}
+h2 {
+    font-weight: bold;
+}
+
+div.box {
+    width: 100%;
+    height: 370px;
+    background-color: rgb(231, 168, 168);
+    padding: 20px;
+    border-radius: 5px;
+    transition: 300ms ease;
+}
+.box-title {
+    font-size: 200%;
+    font-weight: bold;
+}
+hr {
+    border-style: solid;
+    border-width: 2px;
+}
+hr.title {
+    border-style: solid;
+    border-width: 1px;
+}
+div.page {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+img.inverted-color {
+    filter: brightness(0) invert(1);
+}
+img.resized-icon {
+    width: 30px;
+    height: 30px;
+}
+.mycustom-nav {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 5px 10px rgb(235, 235, 235);
+}
+.full-centered {
+    width: 100%;
+    text-align: center;
+}
+
+img.icon-logo-black {
+    filter: brightness(10) invert(1);
+    width: 25px;
+    height: 25px;
+    transform: translateY(-2px);
+}
+
+img.shift-up {
+    transform: translateY(-2px);
+}
+
+div.details-box {
+    background-color: white;
+    color: rgb(36, 36, 36);
+    border-color: rgb(36, 36, 36);
+    border-style: solid;
+    border-width: 1px;
+}
