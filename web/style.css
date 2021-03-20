@@ -1,12 +1,11 @@
 body {
-    font-family: Helvetica;
+    font-family: 'Trebuchet MS', sans-serif;;
     margin: 0;
     padding: 0;
 }
 h2 {
     font-weight: bold;
 }
-
 div.box {
     width: 100%;
     height: 370px;
@@ -34,9 +33,16 @@ div.page {
 img.inverted-color {
     filter: brightness(0) invert(1);
 }
+img.inverted-color-black {
+    filter: brightness(10) invert(1);
+}
 img.resized-icon {
     width: 30px;
     height: 30px;
+}
+img.resized-icon-large {
+    width: 60px;
+    height: 60px;
 }
 .mycustom-nav {
     background-color: rgb(255, 255, 255);
@@ -46,22 +52,25 @@ img.resized-icon {
     width: 100%;
     text-align: center;
 }
-
 img.icon-logo-black {
     filter: brightness(10) invert(1);
     width: 25px;
     height: 25px;
     transform: translateY(-2px);
 }
-
 img.shift-up {
     transform: translateY(-2px);
 }
-
+img.shift-up-large {
+    transform: translateY(-10px);
+}
 div.details-box {
     background-color: white;
     color: rgb(36, 36, 36);
     border-color: rgb(36, 36, 36);
     border-style: solid;
     border-width: 1px;
+}
+.margin-vert {
+    margin-top: 30px;
 }
