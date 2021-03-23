@@ -74,3 +74,7 @@ div.details-box {
 .margin-vert {
     margin-top: 30px;
 }
+div.full-right {
+    width: 100%;
+    text-align: right;
+}

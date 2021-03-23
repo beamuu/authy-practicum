@@ -2,25 +2,44 @@
 
 const username_e = document.getElementById("username");
 const password_e = document.getElementById("password");
-deleteAllCookies();
+const signInButton_e = document.getElementById("sign-in-button");
+
+
+
+
+// signInButton_e.addEventListener("keyup", function(event) {
+//     // Number 13 is the "Enter" key on the keyboard
+//     if (event.keyCode === 13) {
+//       // Cancel the default action, if needed
+//       event.preventDefault();
+//       // Trigger the button element with a click
+//       signInButton_e.click();
+//     }
+// });
+
+
 function signIn() {
 
     
     const password =  hex_sha256(password_e.value);
-    document.cookie = `username=${username_e.value}`;
-    document.cookie = `password=${password}`;
-    console.log(password);
+    
+    fetch(`http://localhost:3000/login?username=${username_e.value}&password=${password}`)
+    .then(res => res.json())
+    .then(res => {
+        console.log(res);
+        if (res.loginStatus == true) {
+            document.cookie = `username=${username_e.value}`;
+            document.cookie = `password=${password}`;
+            location.href = 'http://localhost:3000';
+        }
+        else {
+            alert("Your username or password is incorrect.");
+        }
+    });
 }
 
 
 
-function deleteAllCookies() {
-    var cookies = document.cookie.split(";");
+readAuthCookies_Auth();
 
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        var eqPos = cookie.indexOf("=");
-        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-}
+

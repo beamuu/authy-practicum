@@ -45,8 +45,9 @@ function placeCard() {
 
 
 function removeCard() {
-
+    
 }
+
 
 
 
@@ -73,3 +74,8 @@ var toHHMMSS = (secs) => {
         .filter((v,i) => v !== "00" || i > 0)
         .join(":")
 }
+
+
+
+initializeCookie();
+readAuthCookies_Home();
