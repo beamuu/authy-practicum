@@ -78,3 +78,42 @@ div.full-right {
     width: 100%;
     text-align: right;
 }
+input.master-input {
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 0.5px;
+    color: rgb(53, 53, 53);
+    font-weight: normal;
+    font-size: 90%;
+    text-align:  center;
+    width: 250px;
+    height: 35px;
+}
+div.nav-account {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.red-hover:hover {
+    transition: 200ms ease;
+    background-color: rgb(255, 229, 234);
+}
+
+div.device {
+    padding: 20px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+    border-color: rgb(48, 48, 48);
+    transition: 300ms ease;
+}
+.device-name-home {
+    font-size: 170%;
+}
+.device-name-status-home {
+    font-size: 50%;
+    color: grey;
+}
+.location-home {
+    color: rgb(26, 0, 192);
+}

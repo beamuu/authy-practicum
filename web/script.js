@@ -13,15 +13,13 @@ let mocked_data = {
 } 
 
 
-const lightGreenForBox = "rgb(168, 237, 196)";
+const lightGreenForBox = "rgb(207, 255, 234)";
+const lightGreenForBoxBorder = "rgb(26, 173, 109)"
+
 const lightYellowForBox = "rgb(240, 239, 182)";
 
-const profile       = document.getElementById("profile");
-const cardReader    = document.getElementById("card-reader");
 
-const cardStatus    = document.getElementById("card-status");
-const Location      = document.getElementById("location");
-const duration      = document.getElementById("duration");
+const defaultBorderColor = "rgb(48, 48, 48)";
 
 
 
@@ -31,24 +29,26 @@ const duration      = document.getElementById("duration");
 function placeCard() {
 
     _card_placed = true;
-    profile.style.backgroundColor = lightYellowForBox;
-    cardReader.style.backgroundColor = lightGreenForBox;
-    cardStatus.innerHTML = mocked_data.userDisplayname;
-    duration.innerHTML = toHHMMSS((Date.now()-mocked_data.timestampIn)/1000);
-
-
-    setTimeout(() => {
-        profile.style.backgroundColor = "white";
-    },700);
     
 }
 
 
 function removeCard() {
-    
+    _card_placed = false;
 }
 
-
+function setInterfaceForCardPlaced(bool) {
+    if (bool) {
+        document.getElementById("device-bg").style.backgroundColor = lightGreenForBox;
+        document.getElementById("device-bg").style.borderColor = lightGreenForBoxBorder;
+        document.getElementById("device-status").innerHTML = 'card detected'
+    }
+    else {
+        document.getElementById("device-bg").style.backgroundColor = "white";
+        document.getElementById("device-bg").style.borderColor = defaultBorderColor;
+        document.getElementById("device-status").innerHTML = '(not in used)'
+    }
+}
 
 
 
@@ -56,8 +56,9 @@ function removeCard() {
 
 setInterval(() => {
 
-    // Update duration
-    if (_card_placed) duration.innerHTML = toHHMMSS((Date.now()-mocked_data.timestampIn)/1000);
+    // Update UI
+    setInterfaceForCardPlaced(_card_placed);
+
 },1000);
 
 
