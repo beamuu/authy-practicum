@@ -44,6 +44,23 @@ app.get('/logout' , (req,res) => {
     console.log("\x1b[36m"+"Request at [ /logout ]\ndetails:")
 })
 
+app.get('/device' , (req,res) => {
+    const deviceId = req.query.id;
+    const requirement = req.query.requirements;
+    if (requirement == "all") {
+        res.send(
+            device[deviceId]
+        )
+    }
+    else {
+        res.send(
+            device[deviceId][requirement]
+        )
+    }
+})
+
+
+
 app.get('/require', (req,res) => {
     res.sendFile(path+req.query.PATH);
 })
@@ -52,6 +69,7 @@ app.listen(3000,() => {
     console.log("\x1b[32m"+__filename+" is now running on port: "+port);
     console.log("\x1b[32m"+"[path] is now at ",path);
 })
+
 
 
 
@@ -98,8 +116,11 @@ const users = {
 
 }
 const device = {
-    name: "Tesla HQ",
-    owner: "Elon Dust",
-    currentUser: "0110",
-    cardPlace: true
+    "s3xy": {
+        name: "Elon's bedroom",
+        owner: "Elon Dust",
+        location: "Tesla HQ",
+        currentUser: "0110",
+        cardPlace: true,
+    }
 }

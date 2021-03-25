@@ -105,7 +105,7 @@ div.device {
     border-width: 0.5px;
     border-radius: 5px;
     border-color: rgb(48, 48, 48);
-    transition: 300ms ease;
+    transition: 400ms ease;
 }
 .device-name-home {
     font-size: 170%;
