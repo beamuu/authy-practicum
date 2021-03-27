@@ -67,13 +67,14 @@ app.get('/auth' , (req,res) => {
 
 app.get('/login',(req, res) => {
     let info = req.query;
+    console.log(info);
     if(info.username && info.password){
         user.findOne({username: info.username}, (err, find_result) => {
             if(err){
                 throw err;
             }
-            if(find_result){
-                let passwd = hex.hex_sha256(info.password);
+            if(find_result) {
+
                 if(passwd === find_result.password){
                     console.log(`User ${info.username} login at ${Date.now()}`);
                     let myquery = {username: info.username};
