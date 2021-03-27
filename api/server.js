@@ -66,8 +66,7 @@ app.get('/auth' , (req,res) => {
 });
 
 app.get('/login',(req, res) => {
-    let info = req.body;
-    console.log(hex.hex_sha256(info.password));
+    let info = req.query;
     if(info.username && info.password){
         user.findOne({username: info.username}, (err, find_result) => {
             if(err){
@@ -100,6 +99,10 @@ app.get('/login',(req, res) => {
         res.json({loginStatus: 'miss info'});
     }
 });
+
+app.get('/require', (req,res) => {
+    res.sendFile(path+req.query.PATH);
+})
 
 
 app.listen(PORT,() => console.log(`Running at port ${PORT}`));
