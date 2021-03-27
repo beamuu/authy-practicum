@@ -1,15 +1,14 @@
 const express = require('express');
 const app = express();
-const moment = require('moment');
 const mongoose = require('mongoose');
 const pathArray = __dirname.split('api');
 const path      = pathArray[0];
-const bcrypt = require('bcrypt');
-const salt = 10;
 const PORT = process.env.PORT || 3000;
+const hex = require('./sha256-min');
 
+const nnn = new Date();
 const logger = (req, res, next)=> {
-    console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}:${moment().format()} status: ${res.statusCode} METHOD: ${req.method}`);
+    console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}:${nnn.getHours()}.${nnn.getMinutes()}.${nnn.getSeconds()} status: ${res.statusCode} METHOD: ${req.method}`);
     next();
 };
 
@@ -32,7 +31,7 @@ const userSchema = new mongoose.Schema({
     password: String,
     username: String,
     userID: Number,
-    lastlogin: String
+    lastlogin: Date
 });
 const user = mongoose.model('users', userSchema);
 
@@ -49,21 +48,17 @@ app.post('/register', (req, res) => {
     if(!info.firstname || !info.lastname || !info.password || !info.username || !info.userID){
         return res.json({massage: 'miss info'});
     }
-    bcrypt.hash(req.body.password, salt, (err, hash) => {
-        if(err){
-            return res.json({massage: 'something wrong'});
-        }
-        const newUser = new user({
-            firstname: info.firstname,
-            lastname: info.lastname,
-            password: hash,
-            username: info.username,
-            userID: info.userID,
-            lastlogin: moment().format('LLL')
-        });
-        user.insertMany(newUser);
-        return res.json({massage: 'sucessful'});
-    })
+    let passwd = hex.hex_sha256(info.password);
+    const newUser = new user({
+        firstname: info.firstname,
+        lastname: info.lastname,
+        password: passwd,
+        username: info.username,
+        userID: info.userID,
+        lastlogin: Date.now()
+    });
+    user.insertMany(newUser);
+    return res.json({massage: 'sucessful'});
 });
 
 app.get('/auth' , (req,res) => {
@@ -72,29 +67,29 @@ app.get('/auth' , (req,res) => {
 
 app.get('/login',(req, res) => {
     let info = req.body;
+    console.log(hex.hex_sha256(info.password));
     if(info.username && info.password){
         user.findOne({username: info.username}, (err, find_result) => {
             if(err){
                 throw err;
             }
             if(find_result){
-                bcrypt.compare(info.password, find_result.password, (err, result) => {
-                    if(result == true){
-                        console.log(`User ${info.username} login at ${moment().format('LLL')}`);
-                        let myquery = {username: info.username};
-                        let newvalue = {lastlogin: moment().format('LLL')};
-                        user.updateOne(myquery, newvalue, (err, statusupdate) => {
-                            if(err){
-                                throw err;
-                            }
-                            console.log('Update successful');
-                        });
-                        return res.json({loginStatus: true});
-                    }
-                    else{
+                let passwd = hex.hex_sha256(info.password);
+                if(passwd === find_result.password){
+                    console.log(`User ${info.username} login at ${Date.now()}`);
+                    let myquery = {username: info.username};
+                    let newvalue = {lastlogin: Date.now()};
+                    user.updateOne(myquery, newvalue, (err, statusupdate) => {
+                        if(err){
+                            throw err;
+                        }
+                        console.log('Update successful');
+                    });
+                    return res.json({loginStatus: true});
+                }
+                else{
                         return res.json({loginStatus: 'wrong password'});
-                    }
-                })
+                }
             }
             else{
                 return res.json({loginStatus: 'mai mee username in DB'});
