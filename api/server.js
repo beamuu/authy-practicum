@@ -73,7 +73,7 @@ app.get('/login',(req, res) => {
                 throw err;
             }
             if(find_result){
-                let passwd = hex.hex_sha256(info.password);
+                let passwd = info.password;
                 if(passwd === find_result.password){
                     console.log(`User ${info.username} login at ${Date.now()}`);
                     let myquery = {username: info.username};
