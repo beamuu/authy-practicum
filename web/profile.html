@@ -41,24 +41,45 @@
     <br>
     <div id="output"></div> -->
 
-    <nav class="navbar navbar-expand-lg navbar-light mycustom-nav">
-        <div class="container-fluid" style="padding-left: 3%;">
-            <a class="navbar-brand" href="./home.html"><span><img src="https://github.com/joaobborges/minimal-icons/blob/master/png/@3x-ic-locker-closed.png?raw=true" alt="logo" class="icon-logo-black"></span><b>Authy</b></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="http://localhost:3000">Home</a>
-                    <a class="nav-link" href="http://localhost:3000/profile">Profile</a>
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="http://localhost:3000">
+                            <div style="margin-right: 30px;">
+                                <span><img
+                                    src="https://github.com/joaobborges/minimal-icons/blob/master/png/@3x-ic-locker-closed.png?raw=true"
+                                    alt="logo" class="icon-logo-black"></span><b>Authy</b></a>
+                            </div>
+                        </use>
+                    </svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="http://localhost:3000" class="nav-link px-2 link-dark">Overview</a></li>
+                    <li><a href="http://localhost:3000/devices" class="nav-link px-2 link-dark">Devices</a></li>
+                    <li><a href="http://localhost:3000/cards" class="nav-link px-2 link-dark">Cards</a></li>
+
+                </ul>
+
+
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://raw.githubusercontent.com/joaobborges/minimal-icons/99bfaadcfe71de07ad6dae744052c8660dbbfa9d/svg/ic-user.svg" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="http://localhost:3000/profile">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item red-hover" onclick="signOut()">Sign out</a></li>
+                    </ul>
                 </div>
             </div>
-            <span class="navbar-text">
-                <button type="button" class="btn btn-outline-primary btn-sm" onclick="signOut()">Sign Out</button>
-            </span>
         </div>
-    </nav>
+    </header>
     <br><br><br>
     <div class="container">
         <div class="row">

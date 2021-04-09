@@ -45,7 +45,7 @@ app.get('/logout' , (req,res) => {
 })
 
 app.get('/device' , (req,res) => {
-    const deviceId = req.query.id;
+    const user = req.user;
     const requirement = req.query.requirements;
     if (requirement == "all") {
         res.send(
