@@ -73,8 +73,8 @@ app.get('/login',(req, res) => {
             if(err){
                 throw err;
             }
-            if(find_result) {
-
+            if(find_result){
+                let passwd = info.password;
                 if(passwd === find_result.password){
                     console.log(`User ${info.username} login at ${Date.now()}`);
                     let myquery = {username: info.username};
