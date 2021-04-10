@@ -31,7 +31,8 @@ const userSchema = new mongoose.Schema({
     password: String,
     username: String,
     userID: Number,
-    lastlogin: Date
+    lastlogin: Date,
+    lastlocation: String
 });
 const user = mongoose.model('users', userSchema);
 
@@ -55,7 +56,8 @@ app.post('/register', (req, res) => {
         password: passwd,
         username: info.username,
         userID: info.userID,
-        lastlogin: Date.now()
+        lastlogin: Date.now(),
+        lastlocation: 'not specified'
     });
     user.insertMany(newUser);
     return res.json({massage: 'sucessful'});
@@ -88,7 +90,7 @@ app.get('/login',(req, res) => {
                     return res.json({loginStatus: true});
                 }
                 else{
-                        return res.json({loginStatus: 'wrong password'});
+                    return res.json({loginStatus: 'wrong password'});
                 }
             }
             else{
@@ -99,6 +101,19 @@ app.get('/login',(req, res) => {
     else{
         res.json({loginStatus: 'miss info'});
     }
+});
+
+app.patch('/get_from_device', (req, res)=>{
+    let req = req.body;
+    let myquery = {userID: info.userID};
+    let newupdate = {lastlocation: info.location};
+    user.updateOne(myquery, newupdate, (err, result) => {
+        if(err){
+            throw err;
+        }
+        console.log('Lastlocation update');
+    });
+    return res.json({massage: "Successful"});
 });
 
 app.get('/require', (req,res) => {
