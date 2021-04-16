@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const fetch = require("node-fetch");
 const mongoose = require('mongoose');
 const pathArray = __dirname.split('api');
 const path      = pathArray[0];
