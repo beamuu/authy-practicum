@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const fetch = require("node-fetch");
 const mongoose = require('mongoose');
 const pathArray = __dirname.split('api');
 const path      = pathArray[0];
@@ -35,6 +36,8 @@ const userSchema = new mongoose.Schema({
     lastlocation: String
 });
 const user = mongoose.model('users', userSchema);
+
+let s = 0;
 
 app.get('/' , (req,res) => {
     res.sendFile(path+"web/home.html");
@@ -103,7 +106,7 @@ app.get('/login',(req, res) => {
 });
 
 app.patch('/get_from_device', (req, res)=>{
-    let req = req.body;
+    let info = req.body;
     let myquery = {userID: info.userID};
     let newupdate = {lastlocation: info.location};
     user.updateOne(myquery, newupdate, (err, result) => {
@@ -117,7 +120,18 @@ app.patch('/get_from_device', (req, res)=>{
 
 app.get('/require', (req,res) => {
     res.sendFile(path+req.query.PATH);
-})
+});
+
+app.get('/testfetch', (req,res) => {
+    console.log(s);
+    let info = req.query
+    console.log(info.place);
+    s = info.id;
+    console.log(s);
+    s = 0;
+    // console.log(nn);
+    // return res.json({Nickname: nn.name});
+});
 
 
 app.listen(PORT,() => console.log(`Running at port ${PORT}`));
