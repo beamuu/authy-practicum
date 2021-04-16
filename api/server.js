@@ -37,7 +37,8 @@ const userSchema = new mongoose.Schema({
 });
 const user = mongoose.model('users', userSchema);
 
-let s = 0;
+let fetchFront = 0;
+let fetchUser = null;
 
 app.get('/' , (req,res) => {
     res.sendFile(path+"web/home.html");
@@ -46,6 +47,10 @@ app.get('/' , (req,res) => {
 app.get('/profile' , (req,res) => {
     res.sendFile(path+"web/profile.html");
 })
+
+app.get('/auth' , (req,res) => {
+    res.sendFile(path+"web/auth.html");
+});
 
 app.post('/register', (req, res) => {
     let info = req.body;
@@ -64,10 +69,6 @@ app.post('/register', (req, res) => {
     });
     user.insertMany(newUser);
     return res.json({massage: 'sucessful'});
-});
-
-app.get('/auth' , (req,res) => {
-    res.sendFile(path+"web/auth.html");
 });
 
 app.get('/login',(req, res) => {
@@ -105,34 +106,35 @@ app.get('/login',(req, res) => {
     }
 });
 
-app.patch('/get_from_device', (req, res)=>{
-    let info = req.body;
-    let myquery = {userID: info.userID};
-    let newupdate = {lastlocation: info.location};
-    user.updateOne(myquery, newupdate, (err, result) => {
+app.get('/getHard', (req,res) => {
+    let info = req.query
+    let s = parseInt(info.id);
+    user.find({userID: s}, (err,obj)=> {
         if(err){
             throw err;
         }
-        console.log('Lastlocation update');
+        fetchFront = 1;
+        fetchUser = obj[0];
+        if(fetchUser){
+            console.log("fetchUser success");
+        }
+        return res.send('success');
     });
-    return res.json({massage: "Successful"});
 });
+
+app.get('/userInfo',(req, res) => {
+    if(fetchFront == 1 && fetchUser != null){
+        let sendUser = fetchUser;
+        fetchFront = 0;
+        fetchUser = null;
+        return res.json(sendUser);
+    }
+    return res.json({massage: "Nothing"})
+})
 
 app.get('/require', (req,res) => {
     res.sendFile(path+req.query.PATH);
 });
-
-app.get('/testfetch', (req,res) => {
-    console.log(s);
-    let info = req.query
-    console.log(info.place);
-    s = info.id;
-    console.log(s);
-    s = 0;
-    // console.log(nn);
-    // return res.json({Nickname: nn.name});
-});
-
 
 app.listen(PORT,() => console.log(`Running at port ${PORT}`));
 

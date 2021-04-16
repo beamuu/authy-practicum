@@ -1,11 +1,12 @@
 const fetch = require("node-fetch");
+const fs = require('fs');
+
 
 setInterval(()=> {
-    let p = process.env.place;
-    let status_card = process.env.status;
-    let userId = process.env.userId;
+    var textByLine = fs.readFileSync('txt.txt').toString().split("\n");
 
-    if(status_card == 1){
-        fetch(`http://localhost:3000/testfetch?place=${p}&id=${userId}`);
+    if(parseInt(textByLine[0]) === 1){
+        console.log(textByLine[1]);
+        fetch(`http://localhost:3000/getHard?id=${parseInt(textByLine[1])}`);
     }
 },3000);
