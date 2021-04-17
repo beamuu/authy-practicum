@@ -36,6 +36,15 @@ const userSchema = new mongoose.Schema({
 });
 const user = mongoose.model('users', userSchema);
 
+const dv = new mongoose.Schema({
+    deviceid: String,
+    deviceName: String,
+    descriptions: String,
+    history: Array,
+    location : String
+});
+const device = mongoose.model('devices', dv);
+
 app.get('/' , (req,res) => {
     res.sendFile(path+"web/home.html");
 });
@@ -105,15 +114,15 @@ app.get('/login',(req, res) => {
 
 
 
-// PATH FOR GETTING HARDWARE AND USERS INFO,
-// COMMUNICATES WITH CLIENTS ONLY
+// PATH FOR UPDATING HARDWARE STATES
+// ( ONLY FOR HARDWARE )
 
 app.get('/getHard', (req,res) => {
     let info = req.query;
     let s = parseInt(info.id);
     let myquery = {id: s};
     let newvalue = {lastlocation: "Somewhere"};
-    user.updateOne(myquery, newvalue, (err, statusupdate) => {
+    user.updateOne(myquery, newvalue, (err, statusUpdate) => {
         if(err){
             throw err;
         }
@@ -121,9 +130,10 @@ app.get('/getHard', (req,res) => {
     });
 });
 
+////////////////////////////////////
 
-// PATH FOR UPDATE USER INFO (ONLY FOR CLIENTS)
-// AND DEVICE STATUS (ONLY FOR HARDWARE)
+// PATH FOR GETTING USER INFO 
+// ( ONLY FOR CLIENTS ) 
 
 app.get('/userInfo',(req, res) => {
     let un = req.query.username;
@@ -140,13 +150,22 @@ app.get('/userInfo',(req, res) => {
     });
 });
 
+////////////////////////////////////
+
+// PATH FOR GETTING DECIVE STATES
+// ( ONLY FOR CLIENTS )
+
+app.get('/getDevice', (req,res) => {
+    device.findOne({deviceid: "112"}, (err, obj) => {
+        if(err){
+            throw err;
+        }
+        return res.json(obj);
+    });
+});
 
 
-
-
-
-
-
+////////////////////////////////////
 
 app.get('/require', (req,res) => {
     res.sendFile(path+req.query.PATH);
