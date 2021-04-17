@@ -101,18 +101,21 @@ var toHHMMSS = (secs) => {
 
 
 async function getDeviceStatus() {
-    await fetch('http://localhost:3000/device?id=s3xy&requirements=all')
+    await fetch('http://localhost:3000/getHard')
     .then(res => res.json())
-    .then(res => device = res);
+    .then(res => {
+        console.log(res);
+        updateDeviceUI();
+    });
 }
 
 function printDeviceStatus() {
     console.log(device);
 }
 
-function updateDeviceUI() {
-    document.getElementById("device-name").innerHTML = `${device.name} `;
-    document.getElementById("device-location").innerHTML = `${device.location}`;
+function updateDeviceUI(res) {
+    document.getElementById("device-name").innerHTML = `${res.name} `;
+    document.getElementById("device-location").innerHTML = `${res.location}`;
 }
 
 

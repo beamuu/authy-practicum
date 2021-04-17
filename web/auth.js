@@ -1,5 +1,3 @@
-
-
 const username_e = document.getElementById("username");
 const password_e = document.getElementById("password");
 const signInButton_e = document.getElementById("sign-in-button");
@@ -20,7 +18,6 @@ const signInButton_e = document.getElementById("sign-in-button");
 
 function signIn() {
 
-    
     const password =  hex_sha256(password_e.value);
     
     fetch(`http://localhost:3000/login?username=${username_e.value}&password=${password}`)

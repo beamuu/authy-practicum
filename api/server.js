@@ -102,13 +102,12 @@ app.get('/login',(req, res) => {
     }
 });
 
-<<<<<<< HEAD
-app.patch('/get_from_device', (req, res)=>{
-    // let req = req.body;
-    let myquery = {userID: info.userID};
-    let newupdate = {lastlocation: info.location};
-    user.updateOne(myquery, newupdate, (err, result) => {
-=======
+
+
+
+// PATH FOR GETTING HARDWARE AND USERS INFO,
+// COMMUNICATES WITH CLIENTS ONLY
+
 app.get('/getHard', (req,res) => {
     let info = req.query;
     let s = parseInt(info.id);
@@ -122,10 +121,13 @@ app.get('/getHard', (req,res) => {
     });
 });
 
+
+// PATH FOR UPDATE USER INFO (ONLY FOR CLIENTS)
+// AND DEVICE STATUS (ONLY FOR HARDWARE)
+
 app.get('/userInfo',(req, res) => {
     let un = req.query.username;
     user.findOne({username : un},(err, response) => {
->>>>>>> 4d5032bdfefe1e1852cbe29f1ebe10e56b30fe1a
         if(err){
             throw err;
         }
@@ -137,6 +139,14 @@ app.get('/userInfo',(req, res) => {
         }
     });
 });
+
+
+
+
+
+
+
+
 
 app.get('/require', (req,res) => {
     res.sendFile(path+req.query.PATH);
