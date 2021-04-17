@@ -44,6 +44,10 @@ app.get('/profile' , (req,res) => {
     res.sendFile(path+"web/profile.html");
 })
 
+app.get('/auth' , (req,res) => {
+    res.sendFile(path+"web/auth.html");
+});
+
 app.post('/register', (req, res) => {
     let info = req.body;
     if(!info.firstname || !info.lastname || !info.password || !info.username || !info.userID){
@@ -61,10 +65,6 @@ app.post('/register', (req, res) => {
     });
     user.insertMany(newUser);
     return res.json({massage: 'sucessful'});
-});
-
-app.get('/auth' , (req,res) => {
-    res.sendFile(path+"web/auth.html");
 });
 
 app.get('/login',(req, res) => {
@@ -102,23 +102,45 @@ app.get('/login',(req, res) => {
     }
 });
 
+<<<<<<< HEAD
 app.patch('/get_from_device', (req, res)=>{
     // let req = req.body;
     let myquery = {userID: info.userID};
     let newupdate = {lastlocation: info.location};
     user.updateOne(myquery, newupdate, (err, result) => {
+=======
+app.get('/getHard', (req,res) => {
+    let info = req.query;
+    let s = parseInt(info.id);
+    let myquery = {id: s};
+    let newvalue = {lastlocation: "Somewhere"};
+    user.updateOne(myquery, newvalue, (err, statusupdate) => {
         if(err){
             throw err;
         }
-        console.log('Lastlocation update');
+        console.log('Update successful');
     });
-    return res.json({massage: "Successful"});
+});
+
+app.get('/userInfo',(req, res) => {
+    let un = req.query.username;
+    user.findOne({username : un},(err, response) => {
+>>>>>>> 4d5032bdfefe1e1852cbe29f1ebe10e56b30fe1a
+        if(err){
+            throw err;
+        }
+        if(response){
+            return res.json(response);
+        }
+        else{
+            return res.json({massage: "Something wrong"});
+        }
+    });
 });
 
 app.get('/require', (req,res) => {
     res.sendFile(path+req.query.PATH);
-})
-
+});
 
 app.listen(PORT,() => console.log(`Running at port ${PORT}`));
 
