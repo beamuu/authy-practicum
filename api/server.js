@@ -36,6 +36,15 @@ const userSchema = new mongoose.Schema({
 });
 const user = mongoose.model('users', userSchema);
 
+const dv = new mongoose.Schema({
+    deviceid: String,
+    deviceName: String,
+    descriptions: String,
+    history: Array,
+    location : String
+});
+const device = mongoose.model('devices', dv);
+
 app.get('/' , (req,res) => {
     res.sendFile(path+"web/home.html");
 });
@@ -107,7 +116,7 @@ app.get('/getHard', (req,res) => {
     let s = parseInt(info.id);
     let myquery = {id: s};
     let newvalue = {lastlocation: "Somewhere"};
-    user.updateOne(myquery, newvalue, (err, statusupdate) => {
+    user.updateOne(myquery, newvalue, (err, statusUpdate) => {
         if(err){
             throw err;
         }
@@ -127,6 +136,15 @@ app.get('/userInfo',(req, res) => {
         else{
             return res.json({massage: "Something wrong"});
         }
+    });
+});
+
+app.get('/getDevice', (req,res) => {
+    device.findOne({deviceid: "112"}, (err, obj) => {
+        if(err){
+            throw err;
+        }
+        return res.json(obj);
     });
 });
 
