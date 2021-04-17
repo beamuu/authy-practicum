@@ -36,9 +36,6 @@ const userSchema = new mongoose.Schema({
 });
 const user = mongoose.model('users', userSchema);
 
-let fetchFront = 0;
-let fetchUser = null;
-
 app.get('/' , (req,res) => {
     res.sendFile(path+"web/home.html");
 });
@@ -106,30 +103,32 @@ app.get('/login',(req, res) => {
 });
 
 app.get('/getHard', (req,res) => {
-    let info = req.query
+    let info = req.query;
     let s = parseInt(info.id);
-    user.find({userID: s}, (err,obj)=> {
+    let myquery = {id: s};
+    let newvalue = {lastlocation: "Somewhere"};
+    user.updateOne(myquery, newvalue, (err, statusupdate) => {
         if(err){
             throw err;
         }
-        fetchFront = 1;
-        fetchUser = obj[0];
-        if(fetchUser){
-            console.log("fetchUser success");
-        }
-        return res.send('success');
+        console.log('Update successful');
     });
 });
 
 app.get('/userInfo',(req, res) => {
-    if(fetchFront == 1 && fetchUser != null){
-        let sendUser = fetchUser;
-        fetchFront = 0;
-        fetchUser = null;
-        return res.json(sendUser);
-    }
-    return res.json({massage: "Nothing"})
-})
+    let un = req.query.username;
+    user.findOne({username : un},(err, response) => {
+        if(err){
+            throw err;
+        }
+        if(response){
+            return res.json(response);
+        }
+        else{
+            return res.json({massage: "Something wrong"});
+        }
+    });
+});
 
 app.get('/require', (req,res) => {
     res.sendFile(path+req.query.PATH);
