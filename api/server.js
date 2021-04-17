@@ -103,7 +103,7 @@ app.get('/login',(req, res) => {
 });
 
 app.patch('/get_from_device', (req, res)=>{
-    let req = req.body;
+    // let req = req.body;
     let myquery = {userID: info.userID};
     let newupdate = {lastlocation: info.location};
     user.updateOne(myquery, newupdate, (err, result) => {

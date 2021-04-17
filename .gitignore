@@ -1,5 +1,4 @@
 api/node_modules
-app/node_modules
 .vscode
 .DS_Store
 push.sh
