@@ -130,7 +130,7 @@ app.get('/login',(req, res) => {
 app.get('/getHard', (req,res) => {
     let info = req.query;
     let s = parseInt(info.id);
-    let myquery = {id: s};
+    let myquery = {currentUserId: s};
     let newvalue = {lastlocation: "Somewhere"};
     user.updateOne(myquery, newvalue, (err, statusUpdate) => {
         if(err){
