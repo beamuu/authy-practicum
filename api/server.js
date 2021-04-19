@@ -41,19 +41,9 @@ const userSchema = new mongoose.Schema({
     lastlocation: String
 });
 
-// Added by Beam
-const deviceSchema = new mongoose.Schema({
-    firstname: String,
-    lastname: String,
-    password: String,
-    username: String,
-    userID: Number,
-    lastlogin: Date,
-    lastlocation: String
-});
+
 
 const user = mongoose.model('users', userSchema);
-const device = mongoose.model('device', deviceSchema);
 
 const dv = new mongoose.Schema({
     deviceid: String,
