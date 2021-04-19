@@ -174,7 +174,7 @@ app.get('/getDevice', (req,res) => {
         }
         return res.json(obj);
     });
-    console.log("recieve from device");
+    console.log("[server] send to client");
 });
 
 
