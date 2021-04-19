@@ -14,7 +14,7 @@ function readAuthCookies_Home() {
     username = Cookie[0].split('username=')[1];
     password = Cookie[1].split('password=')[1];
     if (username == "" || password == "") {
-        location.href = "http://localhost:3000/auth";
+        location.href = "https://practicum-po.herokuapp.com/auth";
     }
 }
 function readAuthCookies_Auth() {
@@ -24,7 +24,7 @@ function readAuthCookies_Auth() {
     username = Cookie[0].split('username=')[1];
     password = Cookie[1].split('password=')[1];
     if (username != "" || password != "") {
-        location.href = "http://localhost:3000";
+        location.href = "https://practicum-po.herokuapp.com";
     }
 }
 

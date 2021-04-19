@@ -101,7 +101,7 @@ var toHHMMSS = (secs) => {
 
 
 async function getDeviceStatus() {
-    await fetch('http://localhost:3000/device?id=s3xy&requirements=all')
+    await fetch('https://practicum-po.herokuapp.com/device?id=s3xy&requirements=all')
     .then(res => res.json())
     .then(res => device = res);
 }
