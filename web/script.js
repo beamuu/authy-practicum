@@ -5,19 +5,16 @@
 
 
 
-let device;
-
-
 
 
 let _card_placed = false;
 let _card_placed_cache = false;
 
 
-const id_e = document.getElementById("device-name");
+const device_e = document.getElementById("device-name");
 const status_e = document.getElementById("device-status");
 const location_e = document.getElementById("device-location");
-
+const description_e = document.getElementById("device-description");
 
 
 const lightGreenForBox = "rgb(207, 255, 234)";
@@ -32,7 +29,9 @@ const lightYellowForBox = "rgb(240, 239, 182)";
 const defaultBorderColor = "rgb(48, 48, 48)";
 
 
-
+function _initialize_client_user() {
+    fetch('http://localhost:3000/userInfo?{}')
+}
 
 
 function placeCard() {
@@ -81,8 +80,7 @@ setInterval(() => {
     // Update UI
     checkCard(_card_placed , _card_placed_cache);
     getDeviceStatus();
-    updateDeviceUI();
-},1000);
+},3000);
 
 
 
@@ -101,18 +99,32 @@ var toHHMMSS = (secs) => {
 
 
 async function getDeviceStatus() {
+<<<<<<< HEAD
     await fetch('https://practicum-po.herokuapp.com/device?id=s3xy&requirements=all')
+=======
+    await fetch('http://localhost:3000/getDevice')
+>>>>>>> 8802aa70d2960909e065d4c344e7d5f1ae343a1f
     .then(res => res.json())
-    .then(res => device = res);
+    .then(res => {
+        //console.log(res);
+        updateDeviceUI(res);
+    });
 }
 
 function printDeviceStatus() {
     console.log(device);
 }
 
-function updateDeviceUI() {
-    document.getElementById("device-name").innerHTML = `${device.name} `;
-    document.getElementById("device-location").innerHTML = `${device.location}`;
+function updateDeviceUI(res) {
+    device_e.innerHTML = `${res.deviceName} `;
+    location_e.innerHTML = `${res.location}`;
+    description_e.innerHTML = `${res.descriptions.toUpperCase()}`
+    status_e.innerHTML = `${res.currentUserId ? "( in used )" : "( not in used )"}`;
+    if (res.currentUserId) 
+        placeCard();
+    else
+        removeCard();
+    checkCard();
 }
 
 

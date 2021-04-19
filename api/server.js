@@ -55,62 +55,26 @@ const deviceSchema = new mongoose.Schema({
 const user = mongoose.model('users', userSchema);
 const device = mongoose.model('device', deviceSchema);
 
+const dv = new mongoose.Schema({
+    deviceid: String,
+    deviceName: String,
+    descriptions: String,
+    history: Array,
+    location : String
+});
+const device = mongoose.model('devices', dv);
 
-app.get('/', (req, res) => {
-    res.sendFile(path + "web/home.html");
+app.get('/' , (req,res) => {
+    res.sendFile(path+"web/home.html");
 });
 
 app.get('/profile', (req, res) => {
     res.sendFile(path + "web/profile.html");
 })
 
-// app.get('getDevice', (req, res) => {
-//     const JustHistory = [
-//         {
-//             userId: 11,
-//             username: "nutchanonc",
-//             userDisplayName: "Beamu",
-//             timeIn: Date.now(),
-//         },
-//         {
-//             userId: 11,
-//             username: "nutchanonc",
-//             userDisplayName: "Beamu",
-//             timeIn: Date.now()+1000,
-//         },
-//         {
-//             userId: 11,
-//             username: "nutchanonc",
-//             userDisplayName: "Beamu",
-//             timeIn: Date.now()+100000,
-//         },
-//         {
-//             userId: 11,
-//             username: "nutchanonc",
-//             userDisplayName: "Beamu",
-//             timeIn: Date.now()+120014,
-//         },
-//         {
-//             userId: 11,
-//             username: "nutchanonc",
-//             userDisplayName: "Beamu",
-//             timeIn: Date.now(),
-//         },
-//         {
-//             userId: 11,
-//             username: "nutchanonc",
-//             userDisplayName: "Beamu",
-//             timeIn: Date.now(),
-//         },
-//     ]
-    
-//     res.send({
-//         deviceid: "112",
-//         deviceName: "Sandbox",
-//         descriptions:"Sandbox's card reader",
-//         history: JustHistory,
-//     })
-// })
+app.get('/auth' , (req,res) => {
+    res.sendFile(path+"web/auth.html");
+});
 
 app.post('/register', (req, res) => {
     let info = req.body;
@@ -131,11 +95,7 @@ app.post('/register', (req, res) => {
     return res.json({ massage: 'sucessful' });
 });
 
-app.get('/auth', (req, res) => {
-    res.sendFile(path + "web/auth.html");
-});
-
-app.get('/login', (req, res) => {
+app.get('/login',(req, res) => {
     let info = req.query;
     console.log(info);
     if (info.username && info.password) {
@@ -171,23 +131,66 @@ app.get('/login', (req, res) => {
     }
 });
 
-app.patch('/get_from_device', (req, res) => {
-    // let req = req.body;
-    let myquery = { userID: info.userID };
-    let newupdate = { lastlocation: info.location };
-    user.updateOne(myquery, newupdate, (err, result) => {
-        if (err) {
+
+
+
+// PATH FOR UPDATING HARDWARE STATES
+// ( ONLY FOR HARDWARE )
+
+app.get('/getHard', (req,res) => {
+    let info = req.query;
+    let s = parseInt(info.id);
+    let myquery = {id: s};
+    let newvalue = {lastlocation: "Somewhere"};
+    user.updateOne(myquery, newvalue, (err, statusUpdate) => {
+        if(err){
             throw err;
         }
-        console.log('Lastlocation update');
+        console.log('Update successful');
     });
-    return res.json({ massage: "Successful" });
 });
 
-app.get('/require', (req, res) => {
-    res.sendFile(path + req.query.PATH);
-})
+////////////////////////////////////
 
+// PATH FOR GETTING USER INFO 
+// ( ONLY FOR CLIENTS ) 
+
+app.get('/userInfo',(req, res) => {
+    let un = req.query.username;
+    user.findOne({username : un},(err, response) => {
+        if(err){
+            throw err;
+        }
+        if(response){
+            return res.json(response);
+        }
+        else{
+            return res.json({massage: "Something wrong"});
+        }
+    });
+});
+
+////////////////////////////////////
+
+// PATH FOR GETTING DECIVE STATES
+// ( ONLY FOR CLIENTS )
+
+app.get('/getDevice', (req,res) => {
+    device.findOne({deviceid: "112"}, (err, obj) => {
+        if(err){
+            throw err;
+        }
+        return res.json(obj);
+    });
+    console.log("recieve from device");
+});
+
+
+////////////////////////////////////
+
+app.get('/require', (req,res) => {
+    res.sendFile(path+req.query.PATH);
+});
 
 app.listen(PORT, () => console.log(`Running at port ${PORT}`));
 

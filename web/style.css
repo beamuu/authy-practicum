@@ -1,5 +1,5 @@
 body {
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: Helvetica;
     margin: 0;
     padding: 0;
 }
@@ -109,11 +109,17 @@ div.device {
 }
 .device-name-home {
     font-size: 170%;
+    font-weight: bold;
 }
 .device-name-status-home {
     font-size: 50%;
     color: grey;
 }
 .location-home {
-    color: rgb(26, 0, 192);
+    color: rgb(11, 14, 168);
+}
+.device-description {
+    font-size: 80%;
+    color: rgb(11, 14, 168);
+    
 }
