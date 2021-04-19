@@ -20,14 +20,14 @@ function signIn() {
 
     const password =  hex_sha256(password_e.value);
     
-    fetch(`http://localhost:3000/login?username=${username_e.value}&password=${password}`)
+    fetch(`https://practicum-po.herokuapp.com/login?username=${username_e.value}&password=${password}`)
     .then(res => res.json())
     .then(res => {
         console.log(res);
         if (res.loginStatus == true) {
             document.cookie = `username=${username_e.value}`;
             document.cookie = `password=${password}`;
-            location.href = 'http://localhost:3000';
+            location.href = 'https://practicum-po.herokuapp.com';
         }
         else {
             alert("Your username or password is incorrect.");

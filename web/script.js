@@ -30,7 +30,7 @@ const defaultBorderColor = "rgb(48, 48, 48)";
 
 
 function _initialize_client_user() {
-    fetch('http://localhost:3000/userInfo?{}')
+    // fetch('https://practicum-po.herokuapp.com/userInfo?{}')
 }
 
 
@@ -99,7 +99,7 @@ var toHHMMSS = (secs) => {
 
 
 async function getDeviceStatus() {
-    await fetch('http://localhost:3000/getDevice')
+    await fetch('https://practicum-po.herokuapp.com/getDevice')
     .then(res => res.json())
     .then(res => {
         //console.log(res);
