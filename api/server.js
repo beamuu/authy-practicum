@@ -103,7 +103,7 @@ app.get('/login',(req, res) => {
                         if (err) {
                             throw err;
                         }
-                        console.log('Update successful');
+                        console.log('[database] Update successful');
                     });
                     return res.json({ loginStatus: true });
                 }
@@ -130,13 +130,14 @@ app.get('/login',(req, res) => {
 app.get('/getHard', (req,res) => {
     let info = req.query;
     let s = parseInt(info.id);
+    console.log("[recieve] Device send: " , info.id);
     let myquery = {deviceid: "112"};
     let newvalue = {currentUserId: s};
-    user.updateOne(myquery, newvalue, (err, statusUpdate) => {
+    device.updateOne(myquery, newvalue, (err, statusUpdate) => {
         if(err){
             throw err;
         }
-        console.log('Update successful');
+        console.log('[database] Update successful');
     });
     res.send({status : "done"})
 });
