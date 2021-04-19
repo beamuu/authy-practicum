@@ -138,6 +138,7 @@ app.get('/getHard', (req,res) => {
         }
         console.log('Update successful');
     });
+    res.send({status : "done"})
 });
 
 ////////////////////////////////////
