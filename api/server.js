@@ -13,11 +13,6 @@ const logger = (req, res, next) => {
     next();
 };
 
-
-
-
-
-
 app.use(express.json());
 
 mongoose.connect('mongodb+srv://Palm:1q2w3e4r@cluster0.tqsvi.mongodb.net/practicum', {
@@ -50,7 +45,8 @@ const dv = new mongoose.Schema({
     deviceName: String,
     descriptions: String,
     history: Array,
-    location : String
+    location : String,
+    currentUserId: Number
 });
 const device = mongoose.model('devices', dv);
 
