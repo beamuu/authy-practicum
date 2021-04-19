@@ -168,6 +168,7 @@
     "serve-static": "^1.14.1",
     "setprototypeof": "^1.1.1",
     "signal-exit": "^3.0.3",
+    "socket.io": "^4.0.1",
     "statuses": "^1.5.0",
     "string-width": "^4.2.2",
     "strip-ansi": "^6.0.0",
