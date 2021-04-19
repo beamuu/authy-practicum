@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 node_modules
-
-=======
-api/node_modules
->>>>>>> 8802aa70d2960909e065d4c344e7d5f1ae343a1f
 .vscode
 .DS_Store
 push.sh
