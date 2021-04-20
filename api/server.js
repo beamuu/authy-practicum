@@ -160,6 +160,21 @@ app.get('/userInfo',(req, res) => {
     });
 });
 
+app.get('/getuserbyID', (req, res) => {
+    let un = req.query.id;
+    user.findOne({userID : un},(err, response) => {
+        if(err){
+            throw err;
+        }
+        if(response){
+            return res.json(response);
+        }
+        else{
+            return res.json({massage: "Something wrong"});
+        }
+    });
+});
+
 ////////////////////////////////////
 
 // PATH FOR GETTING DECIVE STATES

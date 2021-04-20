@@ -121,11 +121,18 @@ function updateDeviceUI(res) {
     location_e.innerHTML = `${res.location}`;
     description_e.innerHTML = `${res.descriptions.toUpperCase()}`
     status_e.innerHTML = `${res.currentUserId ? "( in used )" : "( not in used )"}`;
-    if (res.currentUserId) 
+    if (res.currentUserId) {
         placeCard();
-        fetct('https://practicum-po.herokuapp.com/getDevice')
-    else
+        fetct(`https://practicum-po.herokuapp.com/getuserbyID?id=${res.currentUserId}`)
+        .then(res => res.json())
+        .then(res => {
+            current_user_display_e.innerHTML = `${res.firstname} ${res.lastname}`;
+            current_username_e.innerHTML = `@${res.username}`;
+        });
+    }
+    else {
         removeCard();
+    }
     checkCard();
 }
 
