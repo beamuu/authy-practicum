@@ -15,7 +15,7 @@ function readAuthCookies_Home() {
     
     var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
-    const username,password;
+    var username,password;
     for (var i=0 ; i<Cookie.length ; i++) {
         if (Cookie[i].includes('username=')) {
             username = Cookie[i].split('=')[1];
@@ -41,7 +41,7 @@ function readAuthCookies_Auth() {
 
     var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
-    const username,password;
+    var username,password;
     for (var i=0 ; i<Cookie.length ; i++) {
         if (Cookie[i].includes('username=')) {
             username = Cookie[i].split('=')[1];

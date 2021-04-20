@@ -129,10 +129,12 @@ function updateDeviceUI(res) {
             current_user_display_e.innerHTML = `${res.firstname} ${res.lastname}`;
             current_username_e.innerHTML = `@${res.username}`;
             profile_img_e.src = res.image;
+            document.getElementById('user').style.display = 'block';
         });
     }
     else {
         removeCard();
+        document.getElementById('user').style.display = 'none';
     }
     checkCard();
 }
