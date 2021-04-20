@@ -21,7 +21,7 @@ function readAuthCookies_Home() {
             username = Cookie[i].split('=')[1];
         }
         if (Cookie[i].includes('password=')) {
-            username = Cookie[i].split('=')[1];
+            password = Cookie[i].split('=')[1];
         }
     }
     console.log(username);
@@ -47,7 +47,7 @@ function readAuthCookies_Auth() {
             username = Cookie[i].split('=')[1];
         }
         if (Cookie[i].includes('password=')) {
-            username = Cookie[i].split('=')[1];
+            password = Cookie[i].split('=')[1];
         }
     }
     console.log(username);
