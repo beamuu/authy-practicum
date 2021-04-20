@@ -123,7 +123,7 @@ function updateDeviceUI(res) {
     status_e.innerHTML = `${res.currentUserId ? "( in used )" : "( not in used )"}`;
     if (res.currentUserId) {
         placeCard();
-        fetct(`https://practicum-po.herokuapp.com/getuserbyID?id=${res.currentUserId}`)
+        fetch(`https://practicum-po.herokuapp.com/getuserbyID?id=${res.currentUserId}`)
         .then(res => res.json())
         .then(res => {
             current_user_display_e.innerHTML = `${res.firstname} ${res.lastname}`;

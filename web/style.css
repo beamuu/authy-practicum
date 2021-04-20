@@ -127,7 +127,7 @@ div.device {
     width: 200px;
     height: 200px;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgb(218, 218, 218);    
+    /* box-shadow: 0 5px 20px rgb(218, 218, 218);     */
     margin-left: auto;
     margin-right: 0;
 }
