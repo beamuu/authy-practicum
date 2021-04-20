@@ -11,6 +11,47 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 </head>
 <body>
+    <!-- <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="http://localhost:3000">
+                            <div style="margin-right: 30px;">
+                                <span><img
+                                    src="https://github.com/joaobborges/minimal-icons/blob/master/png/@3x-ic-locker-closed.png?raw=true"
+                                    alt="logo" class="icon-logo-black"></span><b>Authy</b></a>
+                            </div>
+                        </use>
+                    </svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="http://localhost:3000" class="nav-link px-2 link-dark">Overview</a></li>
+                    <li><a href="http://localhost:3000/devices" class="nav-link px-2 link-dark">Devices</a></li>
+                    <li><a href="http://localhost:3000/cards" class="nav-link px-2 link-dark">Cards</a></li>
+
+                </ul>
+
+
+                <div class="dropdown text-end">
+                    
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="username"></span>
+                        <img src="https://raw.githubusercontent.com/joaobborges/minimal-icons/99bfaadcfe71de07ad6dae744052c8660dbbfa9d/svg/ic-user.svg" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="http://localhost:3000/profile">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item red-hover" onclick="signOut()">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
     <br><br><br><br><br>
     <div class="page">
         <div class="device" id="device-bg">
@@ -43,7 +84,90 @@
             </div>
             
         </div>
+    </div> -->
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="https://practicum-po.herokuapp.com">
+                            <div style="margin-right: 30px;">
+                                <span><img
+                                    src="https://github.com/joaobborges/minimal-icons/blob/master/png/@3x-ic-locker-closed.png?raw=true"
+                                    alt="logo" class="icon-logo-black"></span><b>Authy</b></a>
+                            </div>
+                        </use>
+                    </svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="https://practicum-po.herokuapp.com" class="nav-link px-2 link-dark">About project</a></li>
+
+                </ul>
+
+
+                <div class="dropdown text-end">
+                    
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="username"></span>
+                        <!-- <img src="https://raw.githubusercontent.com/joaobborges/minimal-icons/99bfaadcfe71de07ad6dae744052c8660dbbfa9d/svg/ic-user.svg" alt="mdo" width="32" height="32" class="rounded-circle"> -->
+                    </a>
+                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="https://practicum-po.herokuapp.com/profile">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item red-hover" onclick="signOut()">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <br><br><br>
+    <div class="full-width">
+        <div class="box-title text-center">About our project</div>
+        <br><br><br>
+        <div class="text-center">
+            <div class="project-description-head">"Authy"</div>
+            <br>
+            <div class="project-description-body">Authy is a card reader which uses a magnetic field to identifies a unique user.</div>
+            <div class="project-description-body">The alignment of magnets creates a unique identity of each card, which can be</div>
+            <div class="project-description-body">represented as a bits. Bit patterns allow us to create an ID of each user and</div>
+            <div class="project-description-body">store them safely on our database.</div>
+            <br><br><br><br><br>
+            <div class="project-description-head">See more details about our project.</div>
+            <br>
+            <div class="project-description-body">frontend/backend code: 
+                <a href="https://github.com/nutchanonc/authy-practicum">https://github.com/nutchanonc/authy-practicum</a>
+            </div>
+            <div class="project-description-body">hardwares/firmware code: 
+                <a href="https://github.com/nutchanonc/practicum-firmware">https://github.com/nutchanonc/practicum-firmware</a>
+            </div>
+            <br><br><br><br><br><br><br>
+        </div>
+        
+        <img src="http://localhost:3000/require?PATH=/img/cardreader.svg" class="about-pic">
+        <br><br><br>
+        <img src="http://localhost:3000/require?PATH=/img/card.svg" class="about-pic">
+        <br><br><br>
+        <img src="http://localhost:3000/require?PATH=/img/cardid.svg" class="about-pic">
+        <br><br><br>
+        <img src="http://localhost:3000/require?PATH=/img/minimal.svg" class="about-pic">
+        <br><br><br><br><br><br>
+        <div class="box-title text-center">All devices and hardwares</div>
+        <br><br><br>
+        <img src="http://localhost:3000/require?PATH=/img/full.svg" class="about-pic">
+        <br><br>
+        <img src="http://localhost:3000/require?PATH=/img/device.svg" class="about-pic">
+        <br><br>
+        
+    <div class="full-width footer text-center">
+        <br>
+        <button class="btn btn-outline-light btn-sm">Back to the website</button>
     </div>
+    </div>
+    
 </body>
 <!-- <script src="http://localhost:3000/require?PATH=/web/auth-func.js"></script> -->
 <script src="http://localhost:3000/require?PATH=/web/sha256-min.js"></script>

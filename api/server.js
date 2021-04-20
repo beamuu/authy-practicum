@@ -190,6 +190,10 @@ app.get('/getDevice', (req,res) => {
     console.log("[server] send to client");
 });
 
+app.get('/about' , (req,res) => {
+    res.sendFile(path+"web/about.html"); 
+});
+
 
 ////////////////////////////////////
 

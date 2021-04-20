@@ -22,6 +22,9 @@ hr {
     border-style: solid;
     border-width: 2px;
 }
+.title {
+    font-size: 200%;
+}
 hr.title {
     border-style: solid;
     border-width: 1px;
@@ -127,7 +130,7 @@ div.device {
     width: 200px;
     height: 200px;
     border-radius: 10px;
-    /* box-shadow: 0 5px 20px rgb(218, 218, 218);     */
+    box-shadow: 0 5px 20px rgb(218, 218, 218); 
     margin-left: auto;
     margin-right: 0;
 }
@@ -146,6 +149,9 @@ p.displayname-display {
     font-size: 140%;
     font-weight: bold;   
 }
+.text-center {
+    text-align: center;
+}
 .text-right {
     text-align: right;
 }
@@ -161,4 +167,21 @@ p.displayname-display {
     border-radius: 1px;
     width: 100%;
     box-shadow: 0 4px 10px rgb(159, 255, 183);
+}
+img.about-pic {
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+}
+.project-description-head {
+    font-size: 120%;
+    font-weight: bold;
+    color: rgb(58, 58, 58);
+}
+.project-description-body {
+    color: rgb(107, 107, 107);
+}
+.footer {
+    background-color:rgb(38, 38, 38);
+    height: 100px;
 }
