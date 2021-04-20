@@ -1,3 +1,5 @@
+const { forEach } = require("core-js/core/array");
+
 function initializeCookie() {
     if (!document.cookie) {
         document.cookie = "username=";
@@ -10,11 +12,20 @@ function initializeCookie() {
 
 function readAuthCookies_Home() {
 
-    var username,password;
+    
     var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
-    username = Cookie[0].split('=')[1];
-    password = Cookie[1].split('=')[1];
+    const [username,password] = Cookie.forEach(e => {
+        if (e.toString().includes("username=")) {
+            username = e.toString().split('=')[1];
+        }
+        if (e.toString().includes("password=")) {
+            password = e.toString().split('=')[1];
+        }
+        return [username,password];
+    })
+    console.log(username);
+    console.log(password);
     if (!username || !password) {
         location.href = "https://practicum-po.herokuapp.com/auth";
     }
@@ -27,10 +38,19 @@ function readAuthCookies_Home() {
 function readAuthCookies_Auth() {
 
     var username,password;
-    var Cookie = document.cookie.split(';');
+    var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
-    username = Cookie[0].split('username=')[1];
-    password = Cookie[1].split('password=')[1];
+    const [username,password] = Cookie.forEach(e => {
+        if (e.toString().includes("username=")) {
+            username = e.toString().split('=')[1];
+        }
+        if (e.toString().includes("password=")) {
+            password = e.toString().split('=')[1];
+        }
+        return [username,password];
+    })
+    console.log(username);
+    console.log(password);
     if (username && password) {
         location.href = "https://practicum-po.herokuapp.com";
     }
