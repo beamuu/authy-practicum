@@ -33,7 +33,8 @@ const userSchema = new mongoose.Schema({
     username: String,
     userID: Number,
     lastlogin: Date,
-    lastlocation: String
+    lastlocation: String,
+    image: String
 });
 
 
@@ -75,7 +76,8 @@ app.post('/register', (req, res) => {
         username: info.username,
         userID: info.userID,
         lastlogin: Date.now(),
-        lastlocation: 'not specified'
+        lastlocation: 'not specified',
+        image : info.image
     });
     user.insertMany(newUser);
     return res.json({ massage: 'sucessful' });
