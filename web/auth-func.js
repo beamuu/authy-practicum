@@ -29,7 +29,7 @@ function readAuthCookies_Auth() {
     var Cookie = document.cookie.split(';');
     username = Cookie[0].split('username=')[1];
     password = Cookie[1].split('password=')[1];
-    if (!username || !password) {
+    if (username && password) {
         location.href = "https://practicum-po.herokuapp.com";
     }
 }
