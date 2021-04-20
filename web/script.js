@@ -33,6 +33,8 @@ const lightYellowForBox = "rgb(240, 239, 182)";
 
 const defaultBorderColor = "rgb(48, 48, 48)";
 
+// no 
+document.getElementById('user').style.visibility = 'hidden';
 
 function _initialize_client_user() {
     // fetch('https://practicum-po.herokuapp.com/userInfo?{}')
@@ -129,12 +131,12 @@ function updateDeviceUI(res) {
             current_user_display_e.innerHTML = `${res.firstname} ${res.lastname}`;
             current_username_e.innerHTML = `@${res.username}`;
             profile_img_e.src = res.image;
-            document.getElementById('user').style.display = 'block';
+            document.getElementById('user').style.visibility = 'visible';
         });
     }
     else {
         removeCard();
-        document.getElementById('user').style.display = 'none';
+        document.getElementById('user').style.display = 'hidden';
     }
     checkCard();
 }
