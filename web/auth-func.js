@@ -37,7 +37,6 @@ function readAuthCookies_Home() {
 }
 function readAuthCookies_Auth() {
 
-    var username,password;
     var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
     const [username,password] = Cookie.forEach(e => {
