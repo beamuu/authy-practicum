@@ -33,6 +33,8 @@ function readAuthCookies_Auth() {
         location.href = "https://practicum-po.herokuapp.com";
     }
     console.log(document.cookie);
+    console.log(username);
+    console.log(password);
 }
 
 function signOut() {
