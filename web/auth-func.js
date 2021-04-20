@@ -15,20 +15,15 @@ function readAuthCookies_Home() {
     
     var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
-    const username = Cookie.forEach(e => {
-        if (e.toString().includes("username=")) {
-            username = e.toString().split('=')[1];
-            return username;
+    const username,password;
+    for (var i=0 ; i<Cookie.length ; i++) {
+        if (Cookie[i].includes('username=')) {
+            username = Cookie[i].split('=')[1];
         }
-        
-    })
-    const password = Cookie.forEach(e => {
-        if (e.toString().includes("password=")) {
-            password = e.toString().split('=')[1];
-            return password;
+        if (Cookie[i].includes('password=')) {
+            username = Cookie[i].split('=')[1];
         }
-        
-    })
+    }
     console.log(username);
     console.log(password);
     console.log(username);
@@ -46,20 +41,15 @@ function readAuthCookies_Auth() {
 
     var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
-    const username = Cookie.forEach(e => {
-        if (e.toString().includes("username=")) {
-            username = e.toString().split('=')[1];
-            return username;
+    const username,password;
+    for (var i=0 ; i<Cookie.length ; i++) {
+        if (Cookie[i].includes('username=')) {
+            username = Cookie[i].split('=')[1];
         }
-        
-    })
-    const password = Cookie.forEach(e => {
-        if (e.toString().includes("password=")) {
-            password = e.toString().split('=')[1];
-            return password;
+        if (Cookie[i].includes('password=')) {
+            username = Cookie[i].split('=')[1];
         }
-        
-    })
+    }
     console.log(username);
     console.log(password);
     if (username && password) {
