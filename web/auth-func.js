@@ -15,15 +15,22 @@ function readAuthCookies_Home() {
     
     var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
-    const username,password = Cookie.forEach(e => {
+    const username = Cookie.forEach(e => {
         if (e.toString().includes("username=")) {
             username = e.toString().split('=')[1];
+            return username;
         }
+        
+    })
+    const password = Cookie.forEach(e => {
         if (e.toString().includes("password=")) {
             password = e.toString().split('=')[1];
+            return password;
         }
-        return username,password;
+        
     })
+    console.log(username);
+    console.log(password);
     console.log(username);
     console.log(password);
     if (!username || !password) {
@@ -39,14 +46,19 @@ function readAuthCookies_Auth() {
 
     var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
-    const [username,password] = Cookie.forEach(e => {
+    const username = Cookie.forEach(e => {
         if (e.toString().includes("username=")) {
             username = e.toString().split('=')[1];
+            return username;
         }
+        
+    })
+    const password = Cookie.forEach(e => {
         if (e.toString().includes("password=")) {
             password = e.toString().split('=')[1];
+            return password;
         }
-        return [username,password];
+        
     })
     console.log(username);
     console.log(password);
