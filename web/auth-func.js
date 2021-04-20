@@ -15,7 +15,7 @@ function readAuthCookies_Home() {
     
     var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
-    const [username,password] = Cookie.forEach(e => {
+    const username,password = Cookie.forEach(e => {
         if (e.toString().includes("username=")) {
             username = e.toString().split('=')[1];
         }
