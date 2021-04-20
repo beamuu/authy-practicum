@@ -136,7 +136,7 @@ function updateDeviceUI(res) {
     }
     else {
         removeCard();
-        document.getElementById('user').style.display = 'hidden';
+        document.getElementById('user').style.visibility = 'hidden';
     }
     checkCard();
 }
