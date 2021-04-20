@@ -11,7 +11,7 @@ function initializeCookie() {
 function readAuthCookies_Home() {
 
     var username,password;
-    var Cookie = document.cookie.split(';');
+    var Cookie = document.cookie.split('; ');
     console.log("read this , ",Cookie);
     username = Cookie[0].split('username=')[1];
     password = Cookie[1].split('password=')[1];
