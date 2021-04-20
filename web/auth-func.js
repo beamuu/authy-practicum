@@ -12,6 +12,7 @@ function readAuthCookies_Home() {
 
     var username,password;
     var Cookie = document.cookie.split(';');
+    consoole.log("read this , ",Cookie);
     username = Cookie[0].split('username=')[1];
     password = Cookie[1].split('password=')[1];
     if (!username || !password) {
