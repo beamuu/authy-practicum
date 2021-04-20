@@ -16,6 +16,11 @@ function readAuthCookies_Home() {
     if (username == "" || password == "") {
         location.href = "https://practicum-po.herokuapp.com/auth";
     }
+    else {
+        fetch(`https://practicum-po.herokuapp.com/userInfo?username=${username}`)
+        .then(res => res.json())
+        .then(res => username_e.innerHTML = res.username);
+    }
 }
 function readAuthCookies_Auth() {
 

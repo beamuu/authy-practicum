@@ -15,6 +15,11 @@ const device_e = document.getElementById("device-name");
 const status_e = document.getElementById("device-status");
 const location_e = document.getElementById("device-location");
 const description_e = document.getElementById("device-description");
+const username_e = document.getElementById("username");
+
+const current_user_display_e = document.getElementById("currentUserDisplay");
+const current_username_e     = document.getElementById("currentUsername");
+const profile_img_e          = document.getElementById("currentUserPicture");
 
 
 const lightGreenForBox = "rgb(207, 255, 234)";
@@ -118,6 +123,7 @@ function updateDeviceUI(res) {
     status_e.innerHTML = `${res.currentUserId ? "( in used )" : "( not in used )"}`;
     if (res.currentUserId) 
         placeCard();
+        fetct('https://practicum-po.herokuapp.com/getDevice')
     else
         removeCard();
     checkCard();

@@ -180,7 +180,12 @@ app.get('/require', (req,res) => {
     res.sendFile(path+req.query.PATH);
 });
 
+app.get('/dev' , (req,res) => {
+    res.sendFile(path+"web/design.html");
+})
+
 app.listen(PORT, () => console.log(`Running at port ${PORT}`));
+
 
 
 // "firstname" : "Chalanthorn",

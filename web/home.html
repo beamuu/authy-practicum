@@ -67,7 +67,7 @@
                     
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <span>user_place_holder</span>
+                        <span id="username"></span>
                         <!-- <img src="https://raw.githubusercontent.com/joaobborges/minimal-icons/99bfaadcfe71de07ad6dae744052c8660dbbfa9d/svg/ic-user.svg" alt="mdo" width="32" height="32" class="rounded-circle"> -->
                     </a>
                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
@@ -116,11 +116,34 @@
 
     <div class="page">
         <div class="device" id="device-bg">
-            <p class="device-name-home"><span id="device-name"></span><span class="device-name-status-home" id="device-status"></span></p>
-            <div class="device-description" id=device-description></div>
-            <br>
-            <br><br><br>
-            <div><img src="https://raw.githubusercontent.com/joaobborges/minimal-icons/99bfaadcfe71de07ad6dae744052c8660dbbfa9d/svg/ic-marker.svg" alt="marker"><span>location: </span><span id="device-location" class="location-home">Loading</span></div>
+            <div class="row">
+                <div class="col-auto">
+                    <p class="device-name-home"><span id="device-name"></span><span class="device-name-status-home" id="device-status"></span></p>
+                    <div class="device-description" id="device-description">/div>
+                    <br>
+                    <br><br><br>
+                    <div><img src="https://raw.githubusercontent.com/joaobborges/minimal-icons/99bfaadcfe71de07ad6dae744052c8660dbbfa9d/svg/ic-marker.svg" alt="marker"><span>location: </span><span id="device-location" class="location-home">Loading</span></div>
+                    <br>
+                </div>
+                
+                <div class="col d-flex justify-content-end">
+                    <div class="row">
+    
+                        <div class="col-lg text-right">
+                            <p class="displayname-display" id="currentUserDisplay">Napasin Saengthong</p>
+                            <p class="username-display" id="currentUsername">@frankydesu</p>
+                        </div>
+                        <div class="col-lg-auto d-flex justify-content-end">
+                            <img class="profile-pic" src="https://scontent-sin6-3.xx.fbcdn.net/v/t1.6435-9/78821786_661516741047805_4090540519296335872_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeFkRvNHcXX9nwpNrS6boLzukMd2tSABrc6Qx3a1IAGtzrlECQ8W44v6d9SfItdHYRQCj_h4ncSkaBgtUwW67M3N&_nc_ohc=VbXNcj_3zmMAX875tol&_nc_ht=scontent-sin6-3.xx&oh=380288363c510cc5237abafe7c4d4156&oe=60A50DF5"/>
+                        </div>
+                        
+                    </div>
+                    
+                        
+                </div>
+
+            </div>
+            
         </div>
     </div>
 
