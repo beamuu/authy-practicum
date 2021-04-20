@@ -22,7 +22,7 @@ function readAuthCookies_Home() {
         if (e.toString().includes("password=")) {
             password = e.toString().split('=')[1];
         }
-        return [username,password];
+        return username,password;
     })
     console.log(username);
     console.log(password);
