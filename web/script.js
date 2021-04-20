@@ -128,6 +128,7 @@ function updateDeviceUI(res) {
         .then(res => {
             current_user_display_e.innerHTML = `${res.firstname} ${res.lastname}`;
             current_username_e.innerHTML = `@${res.username}`;
+            profile_img_e.src = res.image;
         });
     }
     else {
