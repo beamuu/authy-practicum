@@ -87,7 +87,7 @@ setInterval(() => {
     // Update UI
     checkCard(_card_placed , _card_placed_cache);
     getDeviceStatus();
-},3000);
+},1500);
 
 
 
@@ -131,7 +131,8 @@ function updateDeviceUI(res) {
             current_user_display_e.innerHTML = `${res.firstname} ${res.lastname}`;
             current_username_e.innerHTML = `@${res.username}`;
             profile_img_e.src = res.image;
-            document.getElementById('user').style.visibility = 'visible';
+            setTimeout(() => document.getElementById('user').style.visibility = 'visible' , 700)
+            
         });
     }
     else {
