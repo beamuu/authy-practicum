@@ -1,0 +1,19 @@
+Practicum group project.
+by Po the dragon worrior group (โป นักรบมังกร)
+
+** Group members **
+
+    - ชลันธร เอ็งอุทัยวัฒน์ 6210503527
+    - ณัชชนน จันทรศัพท์   6210503578
+    - นภสินธ์ แสงทอง    6210503641
+    - นิค กัลระโห ซเทริฟ 6210506500
+
+
+** Project details **
+    
+    (รายละเอียดอ่านได้ที่ https://ecourse.cpe.ku.ac.th/tpm/project/practicum-63s/status)
+    frontend: แสดงผล user ที่กำลังใช้งานอยู่ (วางบัตร)
+    backend : รับและส่งข้อมูลจาก clients และ devices (Hardware) เพื่อส่งต่อข้อมูล และ update ข้อมูลบน database
+    hardware: รับค่าของบัตร แล้วส่งข้อมูลไปที่ backend 
+    
+รายละเอียด
