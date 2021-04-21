@@ -6,6 +6,8 @@ This project is hosted on `Heroku`, https://practicum-po.herokuapp.com.
 This project is a part of Practicum's final project, Department of Computer Engineering, Kasetsart University.<br>
 Academic Year 2020
 
+- website details:  https://practicum-po.herokuapp.com/about
+
 created by **Po the Dragon Warrior** group (โปนักมังกร)
 - Chalanthorn Aenguthaivadt `6210503527`
 - Nutchanon Chantrasup `6210503578`
