@@ -146,8 +146,15 @@ app.get('/getHard', (req,res) => {
 // ( ONLY FOR CLIENTS ) 
 
 app.get('/userInfo',(req, res) => {
-    let un = req.query.username;
-    user.findOne({username : un},(err, response) => {
+    let info = req.query;
+    let myquery;
+    if(info.id){
+        myquery = {userID : info.id};
+    }
+    else if(info.username){
+        myquery = {userID : info.username};
+    }
+    user.findOne(myquery,(err, response) => {
         if(err){
             throw err;
         }
@@ -160,20 +167,20 @@ app.get('/userInfo',(req, res) => {
     });
 });
 
-app.get('/getuserbyID', (req, res) => {
-    let un = req.query.id;
-    user.findOne({userID : un},(err, response) => {
-        if(err){
-            throw err;
-        }
-        if(response){
-            return res.json(response);
-        }
-        else{
-            return res.json({massage: "Something wrong"});
-        }
-    });
-});
+// app.get('/getuserbyID', (req, res) => {
+//     let un = req.query.id;
+//     user.findOne({userID : un},(err, response) => {
+//         if(err){
+//             throw err;
+//         }
+//         if(response){
+//             return res.json(response);
+//         }
+//         else{
+//             return res.json({massage: "Something wrong"});
+//         }
+//     });
+// });
 
 ////////////////////////////////////
 
