@@ -7,10 +7,10 @@ This project is a part of Practicum's final project, Department of Computer Engi
 Academic Year 2020
 
 created by **Po the Dragon Warrior** group (โปนักมังกร)
-- Cha
+- Chalanthorn Aenguthaivadt `6210503527`
 - Nutchanon Chantrasup `6210503578`
-- Napa
-- Nik
+- Napasin Saengthong `6210503641`
+- Nik Kunraho Struyf `6210506500`
 
 ### Running and Testing
 
