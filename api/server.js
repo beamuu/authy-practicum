@@ -152,7 +152,7 @@ app.get('/userInfo',(req, res) => {
         myquery = {userID : info.id};
     }
     else if(info.username){
-        myquery = {userID : info.username};
+        myquery = {username : info.username};
     }
     user.findOne(myquery,(err, response) => {
         if(err){
